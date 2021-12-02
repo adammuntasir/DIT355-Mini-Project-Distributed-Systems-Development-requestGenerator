@@ -1,5 +1,4 @@
 //Reference: https://www.npmjs.com/package/mqtt
-
 //Setup of publisher
 
 var mqtt = require("mqtt");
