@@ -1,5 +1,6 @@
 var publisher = require("./src/publisher.js");
-//var reqGenerator = require("./src/generator.js");
+var reqGenerator = require("./src/generator.js");
+let myGen = new reqGenerator();
 
 var access = require("../global_values.js");
 
@@ -17,4 +18,6 @@ publisher.publish(
   })
 );
 
-console.log("message sent");
+console.log(myGen.generate(1));
+
+
