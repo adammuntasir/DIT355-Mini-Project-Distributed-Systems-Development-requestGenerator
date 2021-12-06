@@ -1,4 +1,4 @@
-// let dateGenerator = require("random-date-generator");
+let dateGenerator = require("random-date-generator");
 let emptyVar;
 
 class generator {
@@ -32,15 +32,13 @@ class generator {
     return idFilled;
   }
   issuanceGenerate(dentistIdFilled) {
-    //var currentTime = Date.now();
     dentistIdFilled.issuance = Date.now();
-    console.log(dentistIdFilled.issuance);
     return dentistIdFilled;
   }
   generateDate(issuanceFilled) {
     var startDate = new Date(2021, 0, 1);
     var endDate = new Date(2022, 11, 31);
-    var dateAndTime = DateGenerator.getRandomDateInRange(startDate, endDate);
+    var dateAndTime = dateGenerator.getRandomDateInRange(startDate, endDate);
     var time = "";
     var year = dateAndTime.getFullYear();
     var month = dateAndTime.getMonth() + 1;
