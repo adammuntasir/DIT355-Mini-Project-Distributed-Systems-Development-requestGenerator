@@ -8,7 +8,11 @@ publisher.start(); //starts the publisher.js module
 
 var reqId = 0;
 
+console.log(engine.generate(reqId));
+
 setInterval(function () {
-  publisher.publish(access.sendToCircuitBreaker, engine.generate(1));
-  console.log(engine.generate(1));
-}, 1000);
+  var generate = engine.generate(reqId);
+  publisher.publish(access.FromClient, generate);
+  console.log(generate);
+  reqId++;
+}, 2000);

@@ -5,17 +5,6 @@ class generator {
   constructor() {}
 
   //Methods:
-  idGenerate(emptyObj, requestId) {
-    emptyObj.userId = parseInt(Math.random() * (500000 - 1) + 1);
-    emptyObj.requestId = requestId;
-    return emptyObj;
-  }
-  getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
-  }
-
   getFixedMinute(minute) {
     var fixedMinute = minute;
     if (fixedMinute >= 45 || fixedMinute <= 15) {
@@ -24,6 +13,17 @@ class generator {
       fixedMinute = 30;
     }
     return fixedMinute;
+  }
+
+  idGenerate(emptyObj, reqId) {
+    emptyObj.userId = parseInt(Math.random() * (500000 - 1) + 1);
+    emptyObj.requestId = reqId;
+    return emptyObj;
+  }
+  getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
   }
 
   getDentistId(idFilled) {
@@ -35,7 +35,7 @@ class generator {
     return dentistIdFilled;
   }
   generateDate(issuanceFilled) {
-    /* var startDate = new Date(2021, 0, 1);
+    var startDate = new Date(2021, 0, 1);
     var endDate = new Date(2022, 11, 31);
     var dateAndTime = dateGenerator.getRandomDateInRange(startDate, endDate);
     var time = "";
@@ -44,7 +44,7 @@ class generator {
     var day = dateAndTime.getDate();
     var hour = dateAndTime.getHours();
     var minute = dateAndTime.getMinutes();
-    minute = getFixedMinute(minute);
+    //minute = getFixedMinute(minute);
     var newTime = time.concat(
       year,
       "-",
@@ -57,15 +57,15 @@ class generator {
       minute
     );
     issuanceFilled.date = newTime;
-    */
-    issuanceFilled.date = "2021-12-10 10:00";
+    //issuanceFilled.date = "2021-12-10 10:00";
     return issuanceFilled;
   }
   generateCoordinates(dateFilled) {
-    var latitude = Math.random() * (58.077909 - 57.302823) + 57.302823;
+    /*var latitude = Math.random() * (58.077909 - 57.302823) + 57.302823;
     var longitude = Math.random() * (12.984824 - 11.424765) + 11.424765;
-    // dateFilled.clientCoordinates = [latitude, longitude];
+    dateFilled.clientCoordinates = [latitude, longitude];*/
     dateFilled.clientCoordinates = [22.942625, 33.685255];
+    return dateFilled;
   }
   generate(requestId) {
     var emptyObj = {
@@ -81,7 +81,7 @@ class generator {
     var issuanceFilled = this.issuanceGenerate(dentistIdFilled);
     var dateFilled = this.generateDate(issuanceFilled);
     var clientCoordinatesFilled = this.generateCoordinates(dateFilled);
-    var completedStringified = JSON.stringify(issuanceFilled);
+    var completedStringified = JSON.stringify(clientCoordinatesFilled);
     return completedStringified;
   }
 }
