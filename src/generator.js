@@ -63,8 +63,12 @@ class generator {
     issuanceFilled.date = newTime;
     return issuanceFilled;
   }
-  generateCoordinates(dateFilled) {}
-  
+  generateCoordinates(dateFilled) {
+    var latitude = Math.random() * (58.077909 - 57.302823) + 57.302823;
+    var longitude = Math.random() * (12.984824 - 11.424765) + 11.424765;
+    dateFilled.clientCoordinates = [latitude, longitude];
+  }
+
   getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
