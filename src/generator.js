@@ -28,8 +28,7 @@ class generator {
     return emptyObj;
   }
   getDentistId(idFilled) {
-    idFilled.dentistID = 1;
-    // TODO: change the 1 with readable dentist id from the registry
+    idFilled.dentistID = getRandomInt(1, 6);
     return idFilled;
   }
   issuanceGenerate(dentistIdFilled) {
