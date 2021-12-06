@@ -38,10 +38,38 @@ class generator {
     console.log(dentistIdFilled.issuance);
     return dentistIdFilled;
   }
-    generateDate(issuanceFilled) {
-      
+  generateDate(issuanceFilled) {
+    var startDate = new Date(2021, 0, 1);
+    var endDate = new Date(2022, 11, 31);
+    var dateAndTime = DateGenerator.getRandomDateInRange(startDate, endDate);
+    var time = "";
+    var year = dateAndTime.getFullYear();
+    var month = dateAndTime.getMonth() + 1;
+    var day = dateAndTime.getDate();
+    var hour = dateAndTime.getHours();
+    var minute = dateAndTime.getMinutes();
+    minute = getFixedMinute(minute);
+    var newTime = time.concat(
+      year,
+      "-",
+      month,
+      "-",
+      day,
+      " ",
+      hour,
+      ":",
+      minute
+    );
+    issuanceFilled.date = newTime;
+    return issuanceFilled;
   }
   generateCoordinates(dateFilled) {}
+  
+  getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+  }
 }
 
 module.exports = generator;
