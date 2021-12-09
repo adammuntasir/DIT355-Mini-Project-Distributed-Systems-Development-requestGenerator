@@ -18,7 +18,7 @@ The functionality of request Generator component in Dentistimo project is that i
 
 1. Move the file Global_values in the Documentations folder to the parent directory
 2. Move the registry file from the documentation to the parent
-3. To set up the request Generator repository we use "npm i mqtt" command
+3. To set up the request Generator repository we use "npm install" command
 
 ### Running
 
