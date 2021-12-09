@@ -8,11 +8,16 @@ class generator {
   getFixedMinute(minute) {
     var fixedMinute = minute;
     if (fixedMinute >= 45 || fixedMinute <= 15) {
-      fixedMinute = 0;
+      fixedMinute = "00";
     } else {
-      fixedMinute = 30;
+      fixedMinute = "30";
     }
     return fixedMinute;
+  }
+
+  twoDigits(n) {
+    if (n < 10) return "0" + n; // Add leading zero
+    return n;
   }
 
   idGenerate(emptyObj, reqId) {
@@ -40,11 +45,10 @@ class generator {
     var dateAndTime = dateGenerator.getRandomDateInRange(startDate, endDate);
     var time = "";
     var year = dateAndTime.getFullYear();
-    var month = dateAndTime.getMonth() + 1;
-    var day = dateAndTime.getDate();
-    var hour = dateAndTime.getHours();
-    var minute = dateAndTime.getMinutes();
-    //minute = getFixedMinute(minute);
+    var month = this.twoDigits(dateAndTime.getMonth() + 1);
+    var day = this.twoDigits(dateAndTime.getDate());
+    var hour = this.twoDigits(dateAndTime.getHours());
+    var minute = this.getFixedMinute(dateAndTime.getMinutes());
     var newTime = time.concat(
       year,
       "-",
@@ -57,14 +61,15 @@ class generator {
       minute
     );
     issuanceFilled.date = newTime;
+    //console.log(newTime);
     //issuanceFilled.date = "2021-12-10 10:00";
     return issuanceFilled;
   }
   generateCoordinates(dateFilled) {
-    /*var latitude = Math.random() * (58.077909 - 57.302823) + 57.302823;
+    var latitude = Math.random() * (58.077909 - 57.302823) + 57.302823;
     var longitude = Math.random() * (12.984824 - 11.424765) + 11.424765;
-    dateFilled.clientCoordinates = [latitude, longitude];*/
-    dateFilled.clientCoordinates = [22.942625, 33.685255];
+    dateFilled.clientCoordinates = [latitude, longitude];
+    //dateFilled.clientCoordinates = [22.942625, 33.685255];
     return dateFilled;
   }
   generate(requestId) {

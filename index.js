@@ -12,7 +12,7 @@ console.log(engine.generate(reqId));
 
 setInterval(function () {
   var generate = engine.generate(reqId);
-  publisher.publish(access.FromClient, generate);
-  console.log(generate);
+  publisher.publish(access.sendToCircuitBreaker, generate);
+  //console.log(generate);
   reqId++;
-}, 2000);
+}, 500);
