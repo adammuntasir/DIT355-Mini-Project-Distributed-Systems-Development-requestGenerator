@@ -1,5 +1,4 @@
 let dateGenerator = require("random-date-generator");
-let emptyVar;
 
 class generator {
   constructor() {}
